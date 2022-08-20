@@ -32,6 +32,7 @@ public class Consumer {
 
 					try {
 						System.out.println(textMessage.getText());
+						textMessage.acknowledge();	//saljemo acknowledge do Queue i uklanja se poruka iz pending messagesß
 					} catch (JMSException e) {
 						throw new RuntimeException(e);
 					}
