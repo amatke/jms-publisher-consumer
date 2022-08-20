@@ -21,11 +21,14 @@ public class Publisher {
 			Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 			Destination destination = session.createQueue("demoQueue");
 
-			TextMessage textMessage = session.createTextMessage("Ovo je prva poruka poslata preko Queue!");
+			String [] messages = {"Prva poruka", "Druga poruka", "Treca poruka", "Cetvrta poruka"};
 
 			MessageProducer producer = session.createProducer(destination);
-			producer.send(textMessage);
 
+			for (String message : messages) {
+				TextMessage textMessage = session.createTextMessage(message);
+				producer.send(textMessage);
+			}
 
 			System.out.println("Message Published!");
 
