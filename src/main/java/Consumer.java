@@ -21,7 +21,7 @@ public class Consumer {
 			Connection connection = factory.createConnection();
 			connection.start();		// ovo je za Consumera neophodno za razliku od Publishera koji ne mora da ima stalno aktivno slusanje
 
-			Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+			Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 			Destination destination = session.createQueue("demoQueue");
 
 			MessageConsumer consumer = session.createConsumer(destination);
